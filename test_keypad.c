@@ -1,7 +1,7 @@
 /*
  *  File name:  test_keypad.c
  *  Date first: 10/13/2018
- *  Date last:  10/14/2018
+ *  Date last:  10/30/2018
  *
  *  Description: Test and example program for keypad library
  *
@@ -27,9 +27,9 @@ char clock_10;          /* 1/10 second 0-255 */
 char clock_tenths;      /* 1/10 second 0-9 */
 char clock_secs;
 
-/* Columns are D3, D2, D1, C7 */
+/* Rows are D3, D2, D1, C7 */
 
-const KP_PIN cfg_cols[] = {
+const KP_PIN cfg_rows[] = {
     { &PD_ODR, 0x08},
     { &PD_ODR, 0x04},
     { &PD_ODR, 0x02},
@@ -37,9 +37,9 @@ const KP_PIN cfg_cols[] = {
     { (void *) 0, 0}
 };
 
-/* Rows are C6, C5, C4, C3 */
+/* Columns are C6, C5, C4, C3 */
 
-const KP_PIN cfg_rows[] = {
+const KP_PIN cfg_cols[] = {
     { &PC_ODR, 0x40},
     { &PC_ODR, 0x20},
     { &PC_ODR, 0x10},
@@ -47,8 +47,8 @@ const KP_PIN cfg_rows[] = {
     { (void *) 0, 0}
 };
 
-/*  Keymap is Digits plus Cancel, Left, Enter, Up, Down, Right */
-static char key_map[] = "147C2580369LEUDR";
+/*  Keymap is Digits plus * # A-D */
+static char key_map[] = "147*2580369#ABCD";
 
 /******************************************************************************
  *
