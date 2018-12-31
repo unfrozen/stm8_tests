@@ -4,7 +4,7 @@ SDCC = sdcc -mstm8 -I../libs -L../libs -DSTM8103
 
 LIBS = lib_stm8.lib
 OBJS = test_flash.ihx test_keypad.ihx test_max7219.ihx \
-	test_pwm.ihx test_tm1638.ihx test_ping.ihx
+	test_pwm.ihx test_tm1638.ihx test_ping.ihx test_lcd.ihx
 
 all: $(OBJS)
 
