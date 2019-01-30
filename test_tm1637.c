@@ -31,6 +31,9 @@ volatile char clock_ms;
 
 void setup(void);
 
+/* Uncomment to show words instead of numbers */
+//#define SHOW_WORDS
+
 /* Uncomment to test blink function */
 //#define TEST_BLINK	/* test blink function: 8 seconds on, 8 off */
 
@@ -39,6 +42,8 @@ static void show_status(void);
 #pragma disable_warning 196	/* "pointer lost const" */
 
 static char module_type;
+
+const char *words[];
 
 /******************************************************************************
  *
@@ -49,6 +54,7 @@ int main() {
     char	 decimal[12];
     char	 tenths;
     int		 count16;
+    char	 wptr;
 
     setup();
     tm1637_init();
@@ -57,6 +63,7 @@ int main() {
 
     count16 = 0;
     tenths = 0;
+    wptr = 0;
 
     do {
 	if (clock_last == clock_tenths)
@@ -72,6 +79,12 @@ int main() {
 
 	count16++;
 	tm1637_curs(0);
+#ifdef SHOW_WORDS
+	tm1637_puts(words[wptr]);
+	wptr++;
+	if (!words[wptr])
+	    wptr = 0;
+#else /* SHOW_WORDS */
 
 /* Every 4 seconds, switch between decimal count and clock string */
 
@@ -83,6 +96,8 @@ int main() {
 	    bin16_dec_rlz(count16, decimal);
 	    tm1637_puts(decimal + 1);
 	}
+#endif /* SHOW_WORDS */
+
 #ifdef TEST_BLINK
 	if (count16 & 7)
 	    continue;
@@ -138,5 +153,42 @@ void timer_10(void)
 {
     clock_tenths++;
 }
+
+
+/******************************************************************************
+ *
+ *  Some words that a 7-segment module can display
+ */
+
+const char *words[] = {
+    "ALE ",
+    "BALL",
+    "BASH",
+    "BELL",
+    "CAPS",
+    "CHOP",
+    "COLA",
+    "DOLL",
+    "HEAD",
+    "HELL",
+    "HELP",
+    "HOPE",
+    "JOB ",
+    "LESS",
+    "LOAD",
+    "LOOP",
+    "LOSS",
+    "OPAL",
+    "PALE",
+    "PASS",
+    "PEEP",
+    "POLE",
+    "PUFF",
+    "SAFE",
+    "SEED",
+    "SOAP",
+    "USE ",
+    0
+};
 
 
