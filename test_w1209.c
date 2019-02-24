@@ -1,7 +1,7 @@
 /*
  *  File name:  test_w1209.c
  *  Date first: 02/22/2019
- *  Date last:  02/23/2019
+ *  Date last:  02/24/2019
  *
  *  Description: Test/Example for STM8 Library for W1209 thermostat board.
  *
@@ -34,8 +34,8 @@ const char *words[];	/* words that can be shown on LED */
 
 /*  Choose one of these display options  */
 
-#define SHOW_NUMBER	/* show incrementing number */
-//#define SHOW_WORDS	/* show selected words */
+//#define SHOW_NUMBER	/* show incrementing number */
+#define SHOW_WORDS	/* show selected words */
 //#define SHOW_PROBE	/* show raw probe value */
 
 /******************************************************************************
@@ -146,6 +146,7 @@ void clock_10(void)
 
 const char *words[] = {
     "ACE",
+    "ACT",
     "ADD",
     "AID",
     "AIL",
@@ -157,10 +158,12 @@ const char *words[] = {
     "ASP",
     "ASS",
     "BAD",
+    "BAT",
     "BED",
     "BEE",
     "BIB",
     "BID",
+    "BIT",
     "BOA",
     "BOB",
     "BUD",
@@ -178,6 +181,7 @@ const char *words[] = {
     "DIE",
     "DIP",
     "DOC",
+    "DOT",
     "DOE",
     "DUE",
     "EBB",
@@ -189,6 +193,7 @@ const char *words[] = {
     "HIP",
     "HIS",
     "HOP",
+    "HOT",
     "HUB",
     "HUE",
     "ICE",
@@ -202,17 +207,21 @@ const char *words[] = {
     "LID",
     "LIE",
     "LOB",
+    "LOT",
     "ODD",
     "ODE",
     "OFF",
     "OIL",
     "OLD",
+    "OPT",
+    "OUT",
     "PAD",
     "PAL",
     "PEP",
     "PHI",
     "POD",
     "POP",
+    "PUT",
     "PSI",
     "PUB",
     "SAD",
@@ -226,6 +235,11 @@ const char *words[] = {
     "SUB",
     "SUE",
     "SUP",
+    "TAB",
+    "TEA",
+    "TIE",
+    "TOP",
+    "TUB",
     "USE",
     0
 };
