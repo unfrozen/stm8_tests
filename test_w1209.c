@@ -1,7 +1,7 @@
 /*
  *  File name:  test_w1209.c
  *  Date first: 02/22/2019
- *  Date last:  02/24/2019
+ *  Date last:  06/14/2019
  *
  *  Description: Test/Example for STM8 Library for W1209 thermostat board.
  *
@@ -35,8 +35,8 @@ const char *words[];	/* words that can be shown on LED */
 /*  Choose one of these display options  */
 
 //#define SHOW_NUMBER	/* show incrementing number */
-#define SHOW_WORDS	/* show selected words */
-//#define SHOW_PROBE	/* show raw probe value */
+//#define SHOW_WORDS	/* show selected words */
+#define SHOW_PROBE	/* show raw probe value */
 
 /******************************************************************************
  *
@@ -150,6 +150,7 @@ const char *words[] = {
     "ADD",
     "AID",
     "AIL",
+    "AIR",
     "ALE",
     "ALL",
     "ALP",
@@ -166,9 +167,11 @@ const char *words[] = {
     "BIT",
     "BOA",
     "BOB",
+    "BOT",
     "BUD",
     "BUS",
     "CAP",
+    "CAR",
     "CHI",
     "COD",
     "COP",
@@ -187,9 +190,11 @@ const char *words[] = {
     "EBB",
     "ELF",
     "FAD",
+    "FAN",
     "FED",
     "FEE",
     "HAD",
+    "HEN",
     "HIP",
     "HIS",
     "HOP",
@@ -217,7 +222,9 @@ const char *words[] = {
     "OUT",
     "PAD",
     "PAL",
+    "PEN",
     "PEP",
+    "PET",
     "PHI",
     "POD",
     "POP",
@@ -236,6 +243,7 @@ const char *words[] = {
     "SUE",
     "SUP",
     "TAB",
+    "TAN",
     "TEA",
     "TIE",
     "TOP",

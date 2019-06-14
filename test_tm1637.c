@@ -1,7 +1,7 @@
 /*
  *  File name:  test_tm1637.c
  *  Date first: 06/10/2018
- *  Date last:  01/30/2019
+ *  Date last:  06/14/2019
  *
  *  Description: Test and example program for TM1637 library.
  *
@@ -32,7 +32,7 @@ volatile char clock_ms;
 void setup(void);
 
 /* Uncomment to show words instead of numbers */
-//#define SHOW_WORDS
+#define SHOW_WORDS
 
 /* Uncomment to test blink function */
 //#define TEST_BLINK	/* test blink function: 8 seconds on, 8 off */
@@ -161,10 +161,15 @@ void timer_10(void)
  */
 
 const char *words[] = {
+    "ACID",
+    "ACRE",
+    "ACTS",
     "ALE ",
     "BALL",
     "BASH",
     "BELL",
+    "BEER",
+    "BOAT",
     "CAPS",
     "CHOP",
     "COLA",
@@ -178,7 +183,9 @@ const char *words[] = {
     "LOAD",
     "LOOP",
     "LOSS",
+    "NOSE",
     "OPAL",
+    "OPEN",
     "PALE",
     "PASS",
     "PEEP",
@@ -187,6 +194,7 @@ const char *words[] = {
     "SAFE",
     "SEED",
     "SOAP",
+    "TEST",
     "USE ",
     0
 };
