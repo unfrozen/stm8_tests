@@ -1,7 +1,7 @@
 /*
  *  File name:  test_max7219.c
  *  Date first: 03/15/2018
- *  Date last:  03/17/2018
+ *  Date last:  08/07/2019
  *
  *  Description: Test and example program MAX7219 LED controller.
  *
@@ -22,8 +22,8 @@
 
 /* Choose one of the following three test options */
 
-//#define LED_MODE	MAX7219_7SEG	/* 8 7-segment LEDs per module */
-#define LED_MODE	MAX7219_DOT	/* dot matrix ASCII font */
+#define LED_MODE	MAX7219_7SEG	/* 8 7-segment LEDs per module */
+//#define LED_MODE	MAX7219_DOT	/* dot matrix ASCII font */
 //#define LED_MODE	MAX7219_GRAPH	/* pure graphics */
 
 /* If using MAX7219_DOT, choose one of the following two options */
@@ -32,11 +32,11 @@
 #define GRAPHIC_MARQUEE		/* show marquee on graphic display */
 
 /* Use the following if you have 2 graphic modules connected together (8x64 pixels) */
-#define MODULE_CT	8		/* number of LED modules */
-#define CHAR_CT		10		/* number of characters */
+//#define MODULE_CT	8		/* number of LED modules */
+//#define CHAR_CT		10		/* number of characters */
 
 /* Use the following if you have 3 7-segment modules connected together (3x8 digits) */
-//#define MODULE_CT	3
+#define MODULE_CT	3
 
 char clock_ms;		/* milliseconds */
 char clock_10;		/* 1/10 second 0-255 */
@@ -249,9 +249,11 @@ void get_clock(char *clk)
 #if LED_MODE == MAX7219_7SEG
 const char *words[] = {
     "A.BASHED ",
+    "A.BSOLUTE",
     "AC.APULCO",
     "ACC.ESS  ",
     "ACCU.SED ",
+    "AERA.TION",
     "ALCOH.OL ",
     "ALEHOU.SE",
     "ALFALFA. ",
@@ -262,6 +264,7 @@ const char *words[] = {
     "BELL.HOP ",
     "BLEAC.HED",
     "BUFFAL.O ",
+    "BUTTER.ED",
     "CALCULU.S",
     "CAPSULE .",
     "C.ASCADE ",
@@ -270,6 +273,7 @@ const char *words[] = {
     "COCA.COLA",
     "COFFE.E  ",
     "COLLOS.AL",
+    "CONTEN.TS",
     "COUPLED. ",
     "CUEBALL .",
     "D.ECADE  ",
@@ -288,6 +292,7 @@ const char *words[] = {
     "HELLH.OLE",
     "HELPLE.SS",
     "HOPEFUL. ",
+    "INSERTE.D",
     "JABBED  .",
     "J.OBLESS ",
     "LA.UDABLE",
