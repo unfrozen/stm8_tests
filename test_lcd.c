@@ -1,7 +1,7 @@
 /*
  *  File name:  test_lcd.c
  *  Date first: 12/31/2018
- *  Date last:  12/31/2018
+ *  Date last:  08/07/2019
  *
  *  Description: Test and example program for LCD library.
  *
@@ -51,6 +51,11 @@ int main() {
     count16 = 0;
     clock_last = 0;
 
+    /* Choose one of these cursor modes */
+    // lcd_mode(LCD_DISPLAYON | LCD_CURSORON | LCD_BLINKOFF);
+    // lcd_mode(LCD_DISPLAYON | LCD_CURSORON | LCD_BLINKON);
+    lcd_mode(LCD_DISPLAYON | LCD_CURSOROFF);
+
     do {
 	if (clock_last == clock_tenths)
 	    continue;
@@ -79,6 +84,8 @@ int main() {
 	lcd_puts("Line #4 !@#$%^&*()_-");
 
 	count16++;
+	if (!(count16 & 7))	/* test clear every 8 passes */
+	    lcd_clear();
     } while(1);
 }
 
