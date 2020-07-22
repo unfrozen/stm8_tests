@@ -85,7 +85,7 @@ int main() {
     ctx2.rx_buf = spi_rx2;
     /*
      * The first SPI configuration is big-endian with a slow clock speed
-     * to make it easy to verify on an oscilloscope or protocol analyzer.
+     * to make it easy to verify on an oscilloscope or logic analyzer.
      * The tests with RX should have a jumper between MOSI and MISO so
      * you can verify the data using the UART and a terminal program.
      */
