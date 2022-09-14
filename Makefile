@@ -6,14 +6,14 @@ LIBS = lib_stm8.lib
 OBJS = test_flash.ihx test_keypad.ihx test_max7219.ihx \
 	test_pwm.ihx test_tm1638.ihx test_ping.ihx test_lcd.ihx \
 	test_tm1637.ihx test_w1209.ihx test_m9808.ihx test_spi.ihx \
-	test_clock.ihx
+	test_clock.ihx test_bindec.ihx
 
 all: $(OBJS)
 
 .SUFFIXES : .rel .c .ihx
 
 .rel.ihx :
-	$(SDCC) $< $(LIBS)
+	$(SDCC) $< $(LIBS) 
 
 .c.rel :
 	$(SDCC) -c $<
