@@ -39,6 +39,7 @@ void timer_ms(void);	/* millisecond timer call */
 void timer_10(void);	/* 1/10 second timer call */
 
 volatile unsigned int clock_tenths;
+volatile unsigned char flag_trigger;	/* Time to trigger interrupt. */
 
 void local_setup(void);
 
@@ -54,8 +55,13 @@ int main() {
     local_setup();
     clock_init(timer_ms, timer_10);
 
+    flag_trigger = 0;
     clock_last = clock_tenths;
     for (;;) {
+	if (flag_trigger) {
+	    flag_trigger = 0;	/* Lower C3 to trigger interrupt. */
+	    PC_ODR &= 0xf7;
+	}
 	if (clock_last == clock_tenths)
 	    continue;
 	clock_last = clock_tenths;
@@ -104,7 +110,7 @@ void local_setup(void)
 
 void timer_ms(void)
 {
-    PC_ODR &= 0xf7;		/* Lower C3 to trigger interrupt. */
+    flag_trigger = 1;		/* Time to trigger interrupt. */
 }
 
 /******************************************************************************
