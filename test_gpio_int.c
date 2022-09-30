@@ -1,7 +1,7 @@
 /*
  *  File name:  test_gpio_int.c
  *  Date first: 09/28/2022
- *  Date last:  09/28/2022
+ *  Date last:  09/30/2022
  *
  *  Description: Test and example program for STM8 GPIO interrupts.
  *
@@ -59,8 +59,9 @@ int main() {
     clock_last = clock_tenths;
     for (;;) {
 	if (flag_trigger) {
-	    flag_trigger = 0;	/* Lower C3 to trigger interrupt. */
-	    PC_ODR &= 0xf7;
+	    flag_trigger = 0;
+	    PC_ODR |= 0x08;	/* Raise C3. */
+	    PC_ODR &= 0xf7;	/* Lower C3 to trigger falling edge interrupt.*/
 	}
 	if (clock_last == clock_tenths)
 	    continue;
@@ -83,7 +84,7 @@ void local_setup(void)
      * needed, but included for completeness.
      */
     __asm__ ("sim");		/* I0 & I1 must be 1 in CCR register. */
-    EXTI_CR1 = 0x00;		/* Interrupt on falling edge and low level. */
+    EXTI_CR1 = 0x20;		/* Interrupt on falling edge. */
     __asm__ ("rim");
     
     PA_DDR |= 0x08;		/* A3 is output, others are inputs. */
@@ -143,6 +144,7 @@ void timer_10(void)
 void gpioc_isr(void) __interrupt (IRQ_EXTI2)
 {
     PA_ODR |= 0x08;		/* Raise A3 to show on oscilloscope. */
-    PC_ODR |= 0x08;		/* Raise C3 to clear interrupt. */
+    /* To test falling edge only, raising C3 is moved to just before fall. */
+    //    PC_ODR |= 0x08;		/* Raise C3 to clear interrupt. */
     PA_ODR &= 0xf7;		/* Lower A3 to show end of ISR. */
 }
