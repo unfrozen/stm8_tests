@@ -57,7 +57,7 @@ int main() {
     max6675_init();
     uart_init(BAUD_115200);
 
-    uart_puts("Now testing МАX6675 thermocouple device.\r\n");
+    uart_puts("Now testing MAX6675 thermocouple device.\r\n");
 
     clock_last = clock_tenths;
     for (;;) {
@@ -87,7 +87,7 @@ void show_temp(void)
     }
     /* Show temperature in Celcius. */
     uart_puts(bin16_dec_rlz(tempc >> 2, dec));
-    uart_puts(frac[tempc & 3]);
+    uart_puts((char *)frac[tempc & 3]);
     uart_puts("C    ");
     
     /* Show temperature in Fahrenheit. */
@@ -95,7 +95,7 @@ void show_temp(void)
     tempc /= 5;
     tempc += 32 << 2;
     uart_puts(bin16_dec_rlz(tempc >> 2, dec));
-    uart_puts(frac[tempc & 3]);
+    uart_puts((char *)frac[tempc & 3]);
     uart_puts("F\r\n");
 }
 
