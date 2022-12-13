@@ -87,7 +87,7 @@ void show_temp(void)
     }
     /* Show temperature in Celcius. */
     uart_puts(bin16_dec_rlz(tempc >> 2, dec));
-    uart_puts((char *)frac[tempc & 3]);
+    uart_puts(frac[tempc & 3]);
     uart_puts("C    ");
     
     /* Show temperature in Fahrenheit. */
@@ -95,7 +95,7 @@ void show_temp(void)
     tempc /= 5;
     tempc += 32 << 2;
     uart_puts(bin16_dec_rlz(tempc >> 2, dec));
-    uart_puts((char *)frac[tempc & 3]);
+    uart_puts(frac[tempc & 3]);
     uart_puts("F\r\n");
 }
 
